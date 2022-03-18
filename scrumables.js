@@ -11,7 +11,7 @@ app.engine('handlebars', expressHandlebars.engine({
 }))
 app.set('view engine', 'handlebars')
 
-const port = process.env.PORT || 1337
+const port = process.env.PORT || 1037
 
 // static content handler
 app.use(express.static(__dirname + '/public'))

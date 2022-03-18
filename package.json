@@ -7,7 +7,7 @@
   "name": "hotrocks",
   "description": "The Scrumables final project repository for CPSC44000 Software Engineering",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "scrumables.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,0 +1,4 @@
+##Files that we do not want git to upload or sync
+node_modules
+
+##This file works for all sub-directories also

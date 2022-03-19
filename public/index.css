@@ -1,7 +1,4 @@
-*         {
-  color: white;
-}
-
+/* Custom CSS tags */
 .header   { 
     grid-area: header; 
     text-align: center;
@@ -24,13 +21,6 @@
     border: 2px dotted green;
   }
 
-.menu     {
-
-
-  /*transition: height 2s;*/
-}
-
-
 .content  {
     grid-area: content;
     text-align: justify;
@@ -49,8 +39,12 @@
 }
 
 
+/* Default Element Settings */
 
-
+*         {
+  color: white;
+  font-family: "Audiowide", sans-serif;
+}
 
 body{
     background-color: snow;
@@ -66,9 +60,10 @@ a:link {
   text-decoration: none;
 }
 a:visited {
-  color: greenyellow;
+  color: rgb(122, 0, 146);
   background-color: transparent;
   text-decoration: none;
+
 }
 a:hover {
   color: white;

@@ -1,0 +1,205 @@
+*         {
+  color: white;
+}
+
+.header   { 
+    grid-area: header; 
+    text-align: center;
+
+  }
+
+.logo     {
+    grid-area: logo;
+    border: 2px dotted green;
+    text-align: center;
+}
+
+.nav      { 
+    text-align: center;
+    grid-area: menu; 
+    display:  grid;
+    grid-template-columns: auto;
+    width: auto;
+    position: relative;
+    border: 2px dotted green;
+  }
+
+.menu     {
+
+
+  /*transition: height 2s;*/
+}
+
+
+.content  {
+    grid-area: content;
+    text-align: justify;
+    border: 2px dotted green;
+  }
+.footer   { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'menu content content content logo'
+    'footer footer footer footer footer';
+  gap: 10px;
+  padding: 10px;
+}
+
+
+
+
+
+body{
+    background-color: snow;
+    background-image: url('hello-world.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}
+
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: greenyellow;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+button {
+  border: none;
+  cursor: pointer;
+  margin: 20px;
+  color: black;
+
+}
+/*
+#header{
+    color: white;
+    text-align: center
+}
+
+#team {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+h2{
+    color:greenyellow;
+    text-align: left;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:visited {
+    color: greenyellow;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  a:active {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  button {
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+
+  }
+  #hint{
+      margin: 20px;
+      color: white;
+      padding: 0px;
+      margin-bottom: 0;
+      line-height: 0;
+  }
+  #header2{
+    color: white;
+    text-align: left
+}
+
+.meet {
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  transition: width 2s, height 2s;
+}
+
+.meet-content {
+  display: none;
+  position: relative;
+  background-color: transparent;
+  min-width:auto;
+  /* box-shadow: 8px 8px 16px 7px yellowgreen; */
+  /* padding: 0px 0px; */
+  /*z-index: 1;
+  
+ 
+}
+
+.info {
+  display: none;
+  color: white;
+
+}
+
+.info:hover {
+  display: inline;
+  background-color: greenyellow;
+  border-top: 1px dotted green;
+  border-bottom: 1px dotted green;
+  border-left: none;
+  border-right: none;
+}
+
+.meet:hover .meet-content {
+  display: block;
+
+
+}
+
+.container {
+  background-color: green;
+  display: grid;
+  grid-template-columns: auto auto;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+  border-radius: 25px;
+  width: 20px;
+  height: 20px;
+  transition: width 2s, height 2s;
+}
+
+.container:hover {
+  height: 200px;
+  width: 400px;
+  background-color: black;
+  border: 1px dotted green;
+  border-radius: 25px;
+}
+*/

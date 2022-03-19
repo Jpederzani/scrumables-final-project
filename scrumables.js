@@ -1,6 +1,6 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
-const handlers = require('/lib/handlers')
+const handlers = require('./lib/handlers')
 
 
 const app = express()
@@ -15,6 +15,10 @@ const port = process.env.PORT || 1037
 
 // static content handler
 app.use(express.static(__dirname + '/public'))
+
+function initApplication() {
+    console.log('Welcome to the Scrumables homepage - Starting!');
+}
 
 // custom routed pages
  

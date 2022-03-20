@@ -1,30 +1,60 @@
- <header>
+<header>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=neon">
+  
 </header>
 <body>
     <div class="grid-container">
-       <div class="header">
+        <div class="header">
             <h1 id="header"><strong>Scrumables</strong></h1>
             <hr>
-            
-       </div>
+        </div>
        
-       <div class="nav">
-           <h4 style="text-align: center;">Meet the Team:</h4>
-           
-                <a href="https://se-getting-to-know-ap.azurewebsites.net/" target="_blank">Antonio P.</a>
-                <a href="https://calm-stone-01fb45110.1.azurestaticapps.net/"> Omar C.</a>
-                <a href="https://www.lewisu.edu/index.htm" target="_blank"> Jonathon M.</a>
-                <a href="https://node-js-on-azure-jdp.azurewebsites.net/about" alt="Jon's About Me Page" target="_blank"> Jonathan P.</a>
+        <div class="nav">
+            <h4 style="text-align: center;">Site Navigation</h4>
+            <div class="menu">
+                <div class="container">
+                    <div>
+                        <p class="title">Meet the Team</p>
+                            
+                            <div class="info" id="apinfo">
+                                <p>Antonio Pantoja</p>
+                                <a href="https://se-getting-to-know-ap.azurewebsites.net/"  target="">Landing Page</a>
+                            </div>
+                            
+                            <div class="info" id="ocinfo">
+                                <p>Omar Chavez</p>
+                                <a href="https://calm-stone-01fb45110.1.azurestaticapps.net/">Landing Page</a>
+                            </div>
+                    
+                            <div class="info" id="jminfo">
+                                <p>Jonathon Martin</p>
+                                <a href="https://www.lewisu.edu/index.htm" target="_blank">Landing Page</a>
+                            </div>
+                    
+                            <div class="info" id="jpinfo">
+                                <p>Jonathan Pederzani</p>
+                                <a href="https://node-js-on-azure-jdp.azurewebsites.net/about" alt="Jon's About Me Page" target="_blank"> Landing Page</a>
+                            </div>
+                    </div>
+                </div>
 
-                <br>
-            <h6 style="text-align:center;">Team GitHub History:</h6>
-            <a href="https://github.com/Jpederzani/scrumables-final-project/commits/test">Final Project History</a>
-            <a href="https://github.com/apantojaa11/scrumables-portfolio/commits/main" target="_blank">BMI App H istory</a> 
-       </div>
+                <div class="container">
+                    <p class="title">Workflow History</p>
+                    <p class="info" id="s4info"><a href="https://github.com/apantojaa11/scrumables-portfolio/commits/main">Sprint #4 GitHub History</a></p>
+                    <p class="info" id="s5info"><a href="https://github.com/Jpederzani/scrumables-final-project/commits/test">Sprint #5 GitHub History</a></p>                
+                </div>
 
-       <div class="logo">
+                <div class="container">
+                    <p class="title">Assignment Portfolio</p>
+                    <p class="info" id="hrox"><a href="/hotrocks" target="_blank">HotRocks Game</a></p>
+                    <p class="info" id="bmi"><a href="https://scrumables-health-calc.azurewebsites.net/" target="_blank">ScrumaBMI - Scrumables BMI Calculator</a></p>
+                    <p class="info" id="tba"><a href="https://www.lewisu.edu/index.htm" target="_blank">TBA</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="logo">
             <img id= "team" src="the-scrumables.png" alt="Scrumables" usemap="#workmap" style="width:375px;height:480px;">
             <map name="workmap">
                 <area shape="circle" coords="70,210,30" alt="Antonio P." href="https://se-getting-to-know-ap.azurewebsites.net/" target="_blank">
@@ -33,23 +63,12 @@
                 <area shape="circle" coords="335,175,20" alt="Jonathan P." href="https://node-js-on-azure-jdp.azurewebsites.net/" target="_blank">
             </map>
        </div>
-
-       <div class="content">
-        <p id="hint">Confused?</p>
-            <button id="button" type="button" onclick="alert('Use the scroll wheel on your mouse to scroll')">Click here</button>
-        <hr>
-            <h1 id="header2"><strong>Assignment Portfolio</strong></h1>
+            <div class="confused">
+                    <p id="hint">Confused?</p>
+                    <button id="button" type="button" onclick="alert('Use the scroll wheel on your mouse to scroll')">Click here</button>
+                    <hr>
+                <h1 id="header2"><strong>Assignment Portfolio</strong></h1>
             <div>
-                <ul>
-                    <li><a href="/hotrocks" target="_blank">HotRocks Game</a></li>
-                </ul>
-                <ul>
-                    <li><a href="https://scrumables-health-calc.azurewebsites.net/" target="_blank">ScrumaBMI - Scrumables BMI Calculator</a></li>
-                </ul>
-                <ul>
-                    <li><a href="https://www.lewisu.edu/index.htm" target="_blank">TBA</a></li>
-                </ul>
-            </div>
        </div>
     </div>
 </body>

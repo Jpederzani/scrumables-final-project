@@ -1,3 +1,9 @@
+/* 
+    Author:   Jon Pederzani
+    For:      Scrumables Final Project Landing Page
+  
+*/
+
 
 /* Custom CSS tags */
 .header   { 
@@ -26,10 +32,32 @@
 
 .confused {
   grid-area: confused;
+  font-weight: lighter;
+  background-color: rgba(137, 43, 226, 0.212);
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  height: fit-content;
+  transform: translateY(51px);
+  border-top: 2px solid blueviolet;
+  border-bottom: 2px solid blueviolet;
 }
 
 .update {
   grid-area: update;
+  font-weight: lighter;
+  width: 74%;
+  background-color: rgba(137, 43, 226, 0.363);
+  padding: 5px;
+}
+
+.ptitle  {
+  border-bottom: 2px double blueviolet;
+}
+
+.post {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
 }
 
 .menu {
@@ -43,6 +71,8 @@
     grid-area: content;
     text-align: center ;
   }
+
+
 .footer   { grid-area: footer; }
 
 .grid-container {
@@ -50,7 +80,7 @@
   grid-template-areas:
     'header header header header header'
     'logo menu menu menu confused'
-    'update update update update update'
+    'logo update update update update'
     'footer footer footer footer footer';
   column-gap: 25px;
 }
@@ -59,7 +89,6 @@
   display: block;
   transition-property: display;
   transition-duration: 2s;
-
 }
 
 .title  {
@@ -70,7 +99,6 @@
   text-align: center;
   font-variant: small-caps;
   transition: .5s;
-
 }
 
 .container:hover .title {
@@ -107,7 +135,6 @@
 @keyframes fillbg {
   from {background-color: inherit;}
   to {background-color: blueviolet;}
-  
 }
 
 #apinfo:hover, #ocinfo:hover, #jminfo:hover, #jpinfo:hover, #s4info:hover, #s5info:hover, #hrox:hover, #bmi:hover, #tba:hover {
@@ -119,8 +146,11 @@
 @keyframes overfill {
   from{ background-color: blueviolet;}
   to {background-color: rgba(115, 255, 0, 0.527);}
+} 
 
-}  
+#team {
+  border: 1px solid blueviolet;
+}
 
 /* Default Element Settings */
 
@@ -137,57 +167,71 @@ body{
     background-size: cover;
 }
 
- a:link {
+q {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+a:link {
   color: white;
   background-color: transparent;
   text-decoration: none;
 }
+
 a:visited {
   color: rgb(0, 0, 0);
   background-color: transparent;
   text-decoration: none;
-
-}
-a:hover {
-
-  text-decoration: underline;
-  animation: clickme .5s infinite;
 }
 
-@keyframes clickme {
-  from { color: white }
-  to { color: blueviolet }
-  
-}
+/* Customization on a default element*/
+    a:hover {
+      text-decoration: underline;
+      animation: clickme .5s infinite;
+    }
 
+    @keyframes clickme {
+      from { color: white }
+      to { color: blueviolet }
+      
+    }
+/* End Custom Style */
 
 a:active {
   color: red;
   background-color: transparent;
   text-decoration: underline;
 }
+
 button {
   border: none;
   cursor: pointer;
   margin: 20px;
+  width:  100px;
   color: black;
-
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-variant: small-caps;
+  background-color: blueviolet;
+  box-shadow: 0px 4px 3px 3px rgba(172, 255, 47, 0.212);
 }
 
-  button {
-    border: none;
-    cursor: pointer;
-    margin: 20px;
+#cnfsd:hover  {
+  background-color: yellowgreen;
+  width: 75%;
+  transition: width, color;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
 
-  }
-  #hint{
+#hint{
       margin: 20px;
       color: white;
       padding: 0px;
       margin-bottom: 0;
       line-height: 0;
-  }
-  #header2{
+}
+
+ #header2{
     color: white;
     text-align: left
 }

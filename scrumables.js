@@ -26,6 +26,8 @@ app.get('/', handlers.home)
 
 app.get('/hotrocks', handlers.hotrocks)
 
+app.get('/proposal', handlers.proposal)
+
 //Old links for future conversion
 /*
 app.get('/about', (req, res)=> res.render('about'))

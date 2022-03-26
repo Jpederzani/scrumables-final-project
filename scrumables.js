@@ -1,9 +1,13 @@
+// required variables for client
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const handlers = require('./lib/handlers')
-
+const calculations = require('./lib/calculations')
 
 const app = express()
+
+// parse urls for data
+app.use(express.urlencoded({extended:true}))
 
 // configure Handlebars view engine
 app.engine('handlebars', expressHandlebars.engine({
@@ -20,13 +24,19 @@ function initApplication() {
     console.log('Welcome to the Scrumables homepage - Starting!');
 }
 
-// custom routed pages
+// GET method routes; custom routed pages
  
 app.get('/', handlers.home)
 
 app.get('/hotrocks', handlers.hotrocks)
 
 app.get('/proposal', handlers.proposal)
+
+app.get('/riskcalculator', handlers.riskcalculator)
+
+// POST method routes; custom applications
+app.post('/calculations', calculations.calculateRisk)
+
 
 //Old links for future conversion
 /*

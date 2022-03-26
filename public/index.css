@@ -55,6 +55,12 @@
   border-bottom: 2px double blueviolet;
 }
 
+.pdate {
+  font-size: x-small;
+  color: yellowgreen;
+  padding-left: 5px;
+}
+
 .post {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: lighter;

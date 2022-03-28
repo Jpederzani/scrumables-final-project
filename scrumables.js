@@ -34,6 +34,8 @@ app.get('/proposal', handlers.proposal)
 
 app.get('/riskcalculator', handlers.riskcalculator)
 
+app.get('/bmi_calculator', handlers.bmi_calculator)
+
 // POST method routes; custom applications
 app.post('/calculations', calculations.calculateRisk)
 

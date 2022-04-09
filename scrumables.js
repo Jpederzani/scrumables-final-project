@@ -30,8 +30,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use(express.urlencoded({extended:true}))
 
 // configure Handlebars view engine
-app.engine('hbs', exphbs.engine({ extname: '.hbs' }));
-app.set('view engine', 'hbs')
+app.engine('handlebars', exphbs.engine({ extname: '.handlebars' }));
+app.set('view engine', 'handlebars')
 const port = process.env.PORT || 1037
 
 // static content handler
@@ -113,7 +113,7 @@ app.get('/hotrocks/logout', function (req, res) {
 
 
 app.get('/hotrocks/register', (req,res) =>{
-    fs.readFile(__dirname + '/views/register.hbs', function(err, data){
+    fs.readFile(__dirname + '/views/register.handlebars', function(err, data){
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(data);
       return res.end();

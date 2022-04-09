@@ -1,31 +1,150 @@
 // required variables for client
-const express = require('express')
-const expressHandlebars = require('express-handlebars')
-const handlers = require('./lib/handlers')
-const calculations = require('./lib/calculations')
+const exphbs            = require('express-handlebars')
+const express			= require('express');
+const session			= require('express-session');
+const mongoose			= require('mongoose');
+const passport			= require('passport');
+const localStrategy		= require('passport-local').Strategy;
+const bcrypt			= require('bcryptjs');
+const app = express();
+var path = require('path');
+const bodyparser        = require('body-parser');
+const handlers =     require('./lib/handlers')
+const calculations =    require('./lib/calculations')
+const User = require(__dirname+'/models/user');
+var fs = require('fs');
+const req = require('express/lib/request');
 
-const app = express()
+
+if(process.env.NODE_ENV !== 'production'){
+	require('dotenv').config()
+}
+
+//connecting to the database
+mongoose.connect(process.env.DATABASE_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
 // parse urls for data
 app.use(express.urlencoded({extended:true}))
 
 // configure Handlebars view engine
-app.engine('handlebars', expressHandlebars.engine({
-    defaultLayout: 'main',
-}))
+app.engine('handlebars', exphbs.engine({ extname: '.handlebars' }));
 app.set('view engine', 'handlebars')
-
 const port = process.env.PORT || 1037
 
 // static content handler
 app.use(express.static(__dirname + '/public'))
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: true}))
+app.use(express.json());
+app.use(session({
+	secret: "verygoodsecret",
+	resave: false,
+	saveUninitialized: true
+}));
 function initApplication() {
     console.log('Welcome to the Scrumables homepage - Starting!');
 }
+//this is passport.js
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.serializeUser(function (user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+	User.findById(id, function (err, user) {
+		done(err, user);
+	});
+});
+
+passport.use(new localStrategy(function (username, password, done) {
+	User.findOne({ username: username }, function (err, user) {
+		if (err) return done(err);
+		if (!user) return done(null, false, { message: 'Incorrect username.' });
+
+		bcrypt.compare(password, user.password, function (err, res) {
+			if (err) return done(err);
+			if (res === false) return done(null, false, { message: 'Incorrect password.' });
+			
+			return done(null, user);
+		});
+	});
+}));
+
+
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated()) return next();
+	res.redirect('/hotrocks');
+}
+
+function isLoggedOut(req, res, next) {
+	if (!req.isAuthenticated()) return next();
+	res.redirect('/');
+}
 // GET method routes; custom routed pages
  
+app.get('/hotrocks/about', isLoggedIn, (req, res) => {
+	res.send('about');
+});
+
+app.post('/hotrocks/login', passport.authenticate('local', {
+	successRedirect: '/hotrocks' ,
+	failureRedirect: '/login?error=true'
+}));
+
+app.get('/hotrocks/login', isLoggedOut, (req, res) => {
+	const response = {
+		title: "Login",
+		error: req.query.error
+	}
+
+	res.render('login', response);
+});
+
+app.get('/hotrocks/logout', function (req, res) {
+	req.logout();
+	res.redirect('/');
+});
+
+
+app.get('/hotrocks/register', (req,res) =>{
+    fs.readFile(__dirname + '/views/register.handlebars', function(err, data){
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(data);
+      return res.end();
+    })
+  })
+
+app.post('/hotrocks/register/done', async (req, res) => {
+    const exists = await User.exists({ username: req.body.email });
+
+    if (exists) {
+        res.send('Account email is already taken');
+        return;
+    };
+
+    bcrypt.genSalt(10, function (err, salt) {
+        if (err) return next(err);
+        bcrypt.hash(req.body.password, salt, function (err, hash) {
+            if (err) return next(err);
+            
+            const newAdmin = new User({
+                username: req.body.email,
+                password: hash,
+            });
+
+            newAdmin.save();
+            
+            res.redirect('/hotrocks/login');
+        });
+    });
+});
+
 app.get('/', handlers.home)
 
 app.get('/hotrocks', handlers.hotrocks)

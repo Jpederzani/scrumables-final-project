@@ -8,6 +8,8 @@ const localStrategy		= require('passport-local').Strategy;
 const bcrypt			= require('bcryptjs');
 const app = express();
 var path = require('path');
+const siteRoutes = require('./routes/authorized-routes');
+const regSiteRoutes = require('./routes/regular-routes');
 const bodyparser        = require('body-parser');
 const handlers =     require('./lib/handlers')
 const calculations =    require('./lib/calculations')
@@ -27,16 +29,17 @@ mongoose.connect(process.env.DATABASE_URL, {
 });
 
 // parse urls for data
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:false}))
+app.use(express.json());
 
 // configure Handlebars view engine
-app.engine('handlebars', exphbs.engine({ extname: '.handlebars' }));
+app.engine('handlebars', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', 'handlebars')
+app.set('view engine', 'ejs');
 const port = process.env.PORT || 1037
 
 // static content handler
 app.use(express.static(__dirname + '/public'))
-app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyparser.urlencoded({ extended: true}))
 app.use(express.json());
@@ -61,6 +64,12 @@ passport.deserializeUser(function (id, done) {
 		done(err, user);
 	});
 });
+/*User.find({}).sort({gamesplayed: -1}).limit(5).exec(function(err, doc) {   
+    if (err) throw err;
+    var gamesplayed = doc['gamesplayed'];
+    console.log(gamesplayed); // sorting_index == 10
+});
+*/
 
 passport.use(new localStrategy(function (username, password, done) {
 	User.findOne({ username: username }, function (err, user) {
@@ -76,74 +85,9 @@ passport.use(new localStrategy(function (username, password, done) {
 	});
 }));
 
+app.use('/hotrocks', siteRoutes);
 
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) return next();
-	res.redirect('/hotrocks');
-}
-
-function isLoggedOut(req, res, next) {
-	if (!req.isAuthenticated()) return next();
-	res.redirect('/');
-}
-// GET method routes; custom routed pages
- 
-app.get('/hotrocks/about', isLoggedIn, (req, res) => {
-	res.send('about');
-});
-
-app.post('/hotrocks/login', passport.authenticate('local', {
-	successRedirect: '/hotrocks' ,
-	failureRedirect: '/login?error=true'
-}));
-
-app.get('/hotrocks/login', isLoggedOut, (req, res) => {
-	const response = {
-		title: "Login",
-		error: req.query.error
-	}
-
-	res.render('login', response);
-});
-
-app.get('/hotrocks/logout', function (req, res) {
-	req.logout();
-	res.redirect('/');
-});
-
-
-app.get('/hotrocks/register', (req,res) =>{
-    fs.readFile(__dirname + '/views/register.handlebars', function(err, data){
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(data);
-      return res.end();
-    })
-  })
-
-app.post('/hotrocks/register/done', async (req, res) => {
-    const exists = await User.exists({ username: req.body.email });
-
-    if (exists) {
-        res.send('Account email is already taken');
-        return;
-    };
-
-    bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(req.body.password, salt, function (err, hash) {
-            if (err) return next(err);
-            
-            const newAdmin = new User({
-                username: req.body.email,
-                password: hash,
-            });
-
-            newAdmin.save();
-            
-            res.redirect('/hotrocks/login');
-        });
-    });
-});
+app.use('/hotrocks', regSiteRoutes);
 
 app.get('/', handlers.home)
 

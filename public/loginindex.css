@@ -151,3 +151,19 @@ nav{
     background-color: rgb(6, 63, 6);
     transition: 0.4s;
 }
+.charts{
+    background-image: linear-gradient(to bottom, rgb(82, 117, 158), rgb(98, 133, 98));
+    display: border-box;
+    margin-right: auto;
+    margin-left: auto; 
+    border-radius: 5px;
+    border-color: white;
+    color: white;
+    padding: 15px;
+    height: 800px;
+    font-size: 40px;
+    text-align: center;
+    width: 40%;
+    margin-top: 100px;
+
+}

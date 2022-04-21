@@ -57,7 +57,7 @@ router.get('/logout', function (req, res) {
 	res.redirect('/');
 });
 router.get('/profile', isLoggedIn, (req, res) => {
-	res.render('hotrocksloggedin.hbs', {title: 'hotrocks', user: req.user})
+	res.render('hotrocksloggedin.ejs', {title: 'hotrocks', user: req.user})
    /*User.updateOne({username: req.user.username}, {$inc:{gamesplayed:1}}, (err) => {
 		if (err) {
 			console.log("Something wrong when updating data!");

@@ -21,7 +21,7 @@
 
 .board {
     border: 3px solid darkgreen;
-    //background-color: forestgreen;
+    /*background-color: forestgreen;*/
     margin-left: auto; 
     margin-right: auto;
 }
@@ -37,4 +37,17 @@
     margin-right:auto;
     text-align: center;
     font-size: xxx-large;
+}
+
+.user{
+    color: white;
+    border: 2px solid royalblue;
+    margin-right: 20px;
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+    float: right;
+    background-image: linear-gradient(to bottom, rgb(82, 79, 250), rgb(5, 43, 114));
+    font-size: 15px;
+    
 }

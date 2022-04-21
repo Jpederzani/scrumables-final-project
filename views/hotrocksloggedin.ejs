@@ -5,10 +5,10 @@
 
 
 <body>
-<h1> Hello,  </h1>
+<h1> Hello, <%= user.username %> </h1>
 <script>
     let name = user.username;
 </script>
-<h1> You have played  games</h1>
+<h1> You have played <%= user.gamesplayed%> games</h1>
 <h1 id="funcId" class="title">HoT rOcKs!<br><button onclick="app.use(gamesPlayedInc.gamesInc)">Roll Dice</h1>
 </body>

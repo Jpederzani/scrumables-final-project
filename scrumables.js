@@ -48,7 +48,7 @@ app.get('/bmi_calculator', handlers.bmi_calculator)
 // POST method routes; custom applications
 app.post('/calculations', calculations.calculateRisk)
 
-app.post('/getDice', hotrocks.getDice)
+//app.post('/getDice', hotrocks.getDice)
 
 
 //Old links for future conversion

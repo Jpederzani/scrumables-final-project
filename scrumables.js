@@ -3,7 +3,15 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const handlers = require('./lib/handlers')
 const calculations = require('./lib/calculations')
-//const hotrocks = require('./lib/hotrocks/getDice')
+
+//Jquery setup variables/requires
+var jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
 
 const app = express()
 

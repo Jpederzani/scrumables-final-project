@@ -82,30 +82,30 @@ function getValue(die) {
 
 function select(obj) {
     var elem = document.getElementById(obj);
-    var val = document.getElementById("s"+ obj[1]);
+    var val = document.getElementById("s" + obj[1]);
+    var txt = document.getElementById("inf" + obj[1]);
 
     if(val.checked == true && val.disabled == false){
         elem.style.border = "";
         val.checked = false;
+        txt.style.visibility = "hidden";
 
     }
     else if(val.checked == false) {
         elem.style.border =  "ridge 2px red";
         document.getElementById("s"+ obj[1]).checked = true;
-
+        txt.style.visibility = "visible";
     }
 }
 
 function toggleRoll(){
         
     if(activate === true){
-        alert("Toggle Roll True");
         activate = false;
         document.getElementById("roll").disabled = true;
         document.getElementById("sub").disabled = false;
     }
     else {
-        alert("Toggle Roll False");
         activate = true;
         document.getElementById("roll").disabled = false;
         document.getElementById("sub").disabled = true;
@@ -138,6 +138,7 @@ function releaseDice() {
         mark[i].style.border = "";
         document.getElementsByClassName("die")[i].src = "/hr_resources/die_0.png";
         document.getElementsByClassName("select")[i].value = 0;
+        document.getElementsByClassName("info")[i].style.visibility = "hidden";
     }
       
 }
@@ -155,6 +156,7 @@ function uncheckAll() {
 var setScore = function(tempScore) {
     
     if(Number(tempScore) > 0){
+        alert(tempScore + " Points Scored! Roll Again. ")
         roundScore += tempScore
     }
     else if(tempScore === 0){
@@ -187,9 +189,8 @@ var getSelected = function() {
             //continue
         }
     }
-    alert("Selected Values: " + selection);
+
     tScore = tabulateScore(selection);
-    alert("Temp Score: "+tScore)
     setScore(tScore);
     toggleRoll();
 }
@@ -225,7 +226,6 @@ function tabulateScore(die) {
         }
     })
 
-    alert("side count: "+ side);
     tScore = calculateScore(side);
     return tScore;  
     
@@ -304,6 +304,5 @@ function calculateScore(amt){
                 break;
         }	
     }
-    //alert("Score Variable: " + score);
     return score;
 }

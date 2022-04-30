@@ -46,6 +46,14 @@
     visibility: hidden;
 }
 
+.info {
+    color: red;
+    visibility: hidden;
+    text-align: center;
+}
+
+
+
 .scoreboard {
     width: 75%;
     border: 1px double black;

@@ -11,19 +11,58 @@
 <header>	
 <title>HotRocks</title>
 	<script src="hotrocks.js"></script>
-	<link rel="stylesheet" href="/hr_resources/hotrocks.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous">
+    </script>
+  	<link rel="stylesheet" href="/hr_resources/hotrocks.css">
 </header>
-<body>
-    <h1 class="title">HoT rOcKs!<br><button type="button" onclick="rollDice()">Roll Dice</button></h1>
+
+    <h1 class="title">HoT rOcKs!</h1>
         <div class="container">       
             <table class="board" >
                 <tr>
-                    <td>Die 1:  <image id="die1" class="die" src="" alt=""></td>
-                    <td>Die 2:  <image id="die2" class="die" scr="" alt=""></td>
-                    <td>Die 3:  <image id="die3" class="die" scr="" alt=""></td>
-                    <td>Die 4:  <image id="die4" class="die" src="" alt=""></td>
-                    <td>Die 5:  <image id="die5" class="die" src="" alt=""></td>
-                    <td>Die 6:  <image id="die6" class="die" src="" alt=""></td>
+                    <td>Die 1:</td> 
+                    <td>Die 2:</td>
+                    <td>Die 3:</td>
+                    <td>Die 4:</td>
+                    <td>Die 5:</td>
+                    <td>Die 6:</td>
+                </tr>
+
+                <tr>
+                    <td class="holder" id="h1" onclick="select(this.id)"><image id="die1" class="die" src="/hr_resources/die_0.png" value=""></td>
+                    <td class="holder" id="h2" onclick="select(this.id)"><image id="die2" class="die" src="/hr_resources/die_0.png" value=""></td>
+                    <td class="holder" id="h3" onclick="select(this.id)"><image id="die3" class="die" src="/hr_resources/die_0.png" value=""></td>
+                    <td class="holder" id="h4" onclick="select(this.id)"><image id="die4" class="die" src="/hr_resources/die_0.png" value=""></td>
+                    <td class="holder" id="h5" onclick="select(this.id)"><image id="die5" class="die" src="/hr_resources/die_0.png" value=""></td>
+                    <td class="holder" id="h6" onclick="select(this.id)"><image id="die6" class="die" src="/hr_resources/die_0.png" value=""></td>
+                </tr>
+               
+                <tr>
+                    <td id="s1v"><input class="select" name="sval" id="s1" type="checkbox" value=""></td>
+                    <td id="s2v"><input class="select" name="sval" id="s2" type="checkbox" value=""></td>
+                    <td id="s3v"><input class="select" name="sval" id="s3" type="checkbox" value=""></td>
+                    <td id="s4v"><input class="select" name="sval" id="s4" type="checkbox" value=""></td>
+                    <td id="s5v"><input class="select" name="sval" id="s5" type="checkbox" value=""></td>
+                    <td id="s6v"><input class="select" name="sval" id="s6" type="checkbox" value=""></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" id="roll" value="Roll Dice"></td>
+                    <td><input type="submit" id="sub" ></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p class="result" id="r1"></p>
+                        <p class="result" id="r2"></p>
+                        <p class="result" id="r3"></p>
+                        <p class="result" id="r4"></p>
+                        <p class="result" id="r5"></p>
+                        <p class="result" id="r6"></p>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -60,7 +99,33 @@
                         <i><li>5 = 50 points</li>
                         <li>1 = 100 points</li>
                         <li>3 x 2-6 = n x 100 points  <i>(ex: rolling three <q>2s</q> is 200 pts)</i></li>
-                        <li>3 x 1 = 1000 points</li></i></li>
+                        <li>3 x 1 = 1000 points</li>
                 </ul>
             </p>
         </div>
+
+<script>
+    $(document).ready(function() {             
+        "use strict";
+        //Event Listeners
+
+   
+        $("td input:button").on("click", function() {
+            //Function Calls
+            rollDice();
+            uncheckAll();
+            
+        })
+
+        $("td input:submit").on("click", function(){
+            getSelected();
+            //
+            setScore();
+            checkStatus();
+        })
+
+        //Fucntion Calls
+        uncheckAll();
+        setScore();        
+    })
+</script>

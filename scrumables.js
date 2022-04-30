@@ -3,6 +3,7 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const handlers = require('./lib/handlers')
 const calculations = require('./lib/calculations')
+//const hotrocks = require('./lib/hotrocks/getDice')
 
 const app = express()
 
@@ -38,6 +39,8 @@ app.get('/bmi_calculator', handlers.bmi_calculator)
 
 // POST method routes; custom applications
 app.post('/calculations', calculations.calculateRisk)
+
+app.post('/getDice', hotrocks.getDice)
 
 
 //Old links for future conversion

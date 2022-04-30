@@ -9,6 +9,8 @@
 .die {
     height: 50%;
     width: 50%;
+   
+   
 
 }
 
@@ -21,9 +23,27 @@
 
 .board {
     border: 3px solid darkgreen;
-    //background-color: forestgreen;
     margin-left: auto; 
     margin-right: auto;
+}
+
+.holder {
+    background-color:transparent;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.holder:hover {
+   border: dashed 2px red; 
+}
+
+.holder:active {
+    border: solid 2px red;
+}
+
+.select {
+    visibility: hidden;
 }
 
 .scoreboard {

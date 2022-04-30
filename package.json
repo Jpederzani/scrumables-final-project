@@ -2,14 +2,15 @@
   "dependencies": {
     "express": "^4.17.3",
     "express-handlebars": "^6.0.3",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "jquery": "^3.6.0",
+    "jsdom": "^19.0.0"
   },
   "name": "hotrocks",
   "description": "The Scrumables final project repository for CPSC44000 Software Engineering",
   "version": "1.0.0",
   "main": "scrumables.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jpederzani/scrumables-final-project.git"

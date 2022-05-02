@@ -42,9 +42,9 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.json());
 
 // configure Handlebars view engine
-app.engine('handlebars', exphbs.engine({ extname: '.hbs' }));
-app.set('view engine', 'handlebars')
-app.set('view engine', 'ejs');
+app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+//app.set('view engine', 'ejs');
 const port = process.env.PORT || 1037
 
 // static content handler

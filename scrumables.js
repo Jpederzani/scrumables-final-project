@@ -1,9 +1,3 @@
-// required variables for client
-const express = require('express')
-const expressHandlebars = require('express-handlebars')
-const handlers = require('./lib/handlers')
-const calculations = require('./lib/calculations')
-
 //Jquery setup variables/requires
 var jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -13,28 +7,97 @@ global.document = document;
 
 var $ = jQuery = require('jquery')(window);
 
-const app = express()
+// required variables for client
+const exphbs            = require('express-handlebars')
+const express			= require('express');
+const session			= require('express-session');
+const mongoose			= require('mongoose');
+const passport			= require('passport');
+const localStrategy		= require('passport-local').Strategy;
+const bcrypt			= require('bcryptjs');
+const app = express();
+var path = require('path');
+const siteRoutes = require('./routes/authorized-routes');
+const regSiteRoutes = require('./routes/regular-routes');
+const bodyparser        = require('body-parser');
+const handlers =     require('./lib/handlers')
+const calculations =    require('./lib/calculations')
+const User = require(__dirname+'/models/user');
+var fs = require('fs');
+const req = require('express/lib/request');
+
+
+if(process.env.NODE_ENV !== 'production'){
+	require('dotenv').config()
+}
+
+//connecting to the database
+mongoose.connect(process.env.DATABASE_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
 // parse urls for data
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:false}))
+app.use(express.json());
 
 // configure Handlebars view engine
-app.engine('handlebars', expressHandlebars.engine({
-    defaultLayout: 'main',
-}))
+app.engine('handlebars', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', 'handlebars')
-
+app.set('view engine', 'ejs');
 const port = process.env.PORT || 1037
 
 // static content handler
 app.use(express.static(__dirname + '/public'))
-
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: true}))
+app.use(express.json());
+app.use(session({
+	secret: "verygoodsecret",
+	resave: false,
+	saveUninitialized: true
+}));
 function initApplication() {
     console.log('Welcome to the Scrumables homepage - Starting!');
 }
+//this is passport.js
+app.use(passport.initialize());
+app.use(passport.session());
 
-// GET method routes; custom routed pages
- 
+passport.serializeUser(function (user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+	User.findById(id, function (err, user) {
+		done(err, user);
+	});
+});
+/*User.find({}).sort({gamesplayed: -1}).limit(5).exec(function(err, doc) {   
+    if (err) throw err;
+    var gamesplayed = doc['gamesplayed'];
+    console.log(gamesplayed); // sorting_index == 10
+});
+*/
+
+passport.use(new localStrategy(function (username, password, done) {
+	User.findOne({ username: username }, function (err, user) {
+		if (err) return done(err);
+		if (!user) return done(null, false, { message: 'Incorrect username.' });
+
+		bcrypt.compare(password, user.password, function (err, res) {
+			if (err) return done(err);
+			if (res === false) return done(null, false, { message: 'Incorrect password.' });
+			
+			return done(null, user);
+		});
+	});
+}));
+
+app.use('/hotrocks', siteRoutes);
+
+app.use('/hotrocks', regSiteRoutes);
+
 app.get('/', handlers.home)
 
 app.get('/hotrocks', handlers.hotrocks)
@@ -47,8 +110,6 @@ app.get('/bmi_calculator', handlers.bmi_calculator)
 
 // POST method routes; custom applications
 app.post('/calculations', calculations.calculateRisk)
-
-//app.post('/getDice', hotrocks.getDice)
 
 
 //Old links for future conversion

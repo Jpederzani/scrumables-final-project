@@ -1,0 +1,243 @@
+/* 
+    Author:   Jon Pederzani
+    For:      Scrumables Final Project Landing Page
+  
+*/
+
+
+/* Custom CSS tags */
+.header   { 
+    grid-area: header; 
+    text-align: center;
+  }
+
+.logo     {
+    grid-area: logo;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+.nav      { 
+  grid-area: menu;
+  display: inline;
+  column-gap: 5px;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-variant: small-caps;
+  font-size: large;
+  }
+
+.confused {
+  grid-area: confused;
+  font-weight: lighter;
+  background-color: rgba(137, 43, 226, 0.212);
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  height: fit-content;
+  transform: translateY(51px);
+  border-top: 2px solid blueviolet;
+  border-bottom: 2px solid blueviolet;
+}
+
+.update {
+  grid-area: update;
+  font-weight: lighter;
+  width: 74%;
+  background-color: rgba(137, 43, 226, 0.363);
+  padding: 5px;
+}
+
+.ptitle  {
+  border-bottom: 2px double blueviolet;
+}
+
+.pdate {
+  font-size: x-small;
+  color: yellowgreen;
+  padding-left: 5px;
+}
+
+.post {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  vertical-align: middle;
+  column-gap: 10px;
+}
+
+.content  {
+    grid-area: content;
+    text-align: center ;
+  }
+
+
+.footer   { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'logo menu menu menu confused'
+    'logo update update update update'
+    'footer footer footer footer footer';
+  column-gap: 25px;
+}
+
+.container {
+  display: block;
+  transition-property: display;
+  transition-duration: 2s;
+}
+
+.title  {
+  border: 1px solid purple;
+  background-color: rgba(137, 43, 226, 0.397);
+  border-radius: 25px;
+  width: auto;
+  text-align: center;
+  font-variant: small-caps;
+  transition: .5s;
+}
+
+.container:hover .title {
+  display: block;
+  background-color: rgba(115, 255, 0, 0.527);
+  box-shadow: 0px 8px 16px 0px blueviolet;
+  z-index: 1;
+}
+
+
+.container:hover .info {
+  visibility: visible;
+  z-index: 2;
+  text-align: justify;
+  padding-left: 15px;
+  box-shadow: 0px 8px 16px 0px green;
+  animation: fillbg 1s forwards;
+}
+
+.info {
+  visibility: hidden;
+  display: block;
+  width: auto;
+  height: fit-content;
+  font-variant: small-caps;
+  background-color: transparent;
+  transform: translate(50px, 0px);
+  transition-property: background-color;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+  text-shadow: 1px 6px 7px rgb(0, 0, 0);
+}
+
+@keyframes fillbg {
+  from {background-color: inherit;}
+  to {background-color: blueviolet;}
+}
+
+#apinfo:hover, #ocinfo:hover, #jminfo:hover, #jpinfo:hover, #s4info:hover, #s5info:hover, #hrox:hover, #bmi:hover, #tba:hover {
+  background-color: inherit;
+  box-shadow: 0px 8px 16px 0px rgba(252, 2, 252, 0.2);
+  animation: overfill 1s forwards;
+ }
+
+@keyframes overfill {
+  from{ background-color: blueviolet;}
+  to {background-color: rgba(115, 255, 0, 0.527);}
+} 
+
+#team {
+  border: 1px solid blueviolet;
+}
+
+/* Default Element Settings */
+
+*         {
+  color: white;
+  font-family: "Audiowide", sans-serif;
+}
+
+body{
+    background-color: snow;
+    background-image: url('hello-world.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}
+
+q {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Customization on a default element*/
+    a:hover {
+      text-decoration: underline;
+      animation: clickme .5s infinite;
+    }
+
+    @keyframes clickme {
+      from { color: white }
+      to { color: blueviolet }
+      
+    }
+/* End Custom Style */
+
+a:active {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  margin: 20px;
+  width:  100px;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-variant: small-caps;
+  background-color: blueviolet;
+  box-shadow: 0px 4px 3px 3px rgba(172, 255, 47, 0.212);
+}
+
+#cnfsd:hover  {
+  background-color: yellowgreen;
+  width: 75%;
+  transition: width, color;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+#hint{
+      margin: 20px;
+      color: white;
+      padding: 0px;
+      margin-bottom: 0;
+      line-height: 0;
+}
+
+ #header2{
+    color: white;
+    text-align: left
+}

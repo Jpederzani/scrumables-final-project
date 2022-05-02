@@ -1,0 +1,133 @@
+<head>
+    <meta charset="UTF-8">
+    <title>HIRC</title>
+    <script src="validate.js"></script>
+    <link rel="stylesheet" href="BMI.css">
+</head>
+
+<body class="grid-container">   
+   
+    {{!-- Form Start --}}
+    <form action="/calculations" method="POST" id="riskform" onsubmit="return validate()">        
+
+    {{!-- Page Header/Title --}}
+    <h1 class="title">HEALTH RISK CALCULATOR</h1>
+
+    {{!-- Menu Option --}}
+       
+            <legend style="text-align:center">Site Navigation</legend>
+            <div class="nav">
+                   <div>  
+                    <span class="link" style="cursor:pointer" onclick="document.location='/'" id="home">Home</span>
+                    <span class="link" style="cursor:pointer" onclick="document.location='/hotrocks'" id="hr">Hot Rocks</span>
+                    <span class="link" style="cursor:pointer" onclick="document.location='/proposal'" id="fpp">Final Project Proposal</span>
+                   </div>
+           </div>
+       
+    {{!-- Application Instructions --}}
+        <div class="inst">       
+            <fieldset>
+                <legend>About the Risk Calculator</legend>
+                <p>
+                    The "Health Risk Calculator" application helps insurance agents determine the risk level and insurability of clients.  To use the calculator you just need  to enter the requested information in each of the following fields.  Once all fields are populated you can submit the form to see the client's risk level.
+                </p>
+                <p>
+                    Their health is judged in terms of their body-mass index, blood pressure, age, and family history of disease.
+                </p>
+            </fieldset>
+        </div>    
+    <br>
+        {{!-- AGE  --}}
+            <div class="section"><h2>AGE</h2></div>
+            <div class="age">
+                <fieldset>
+                    <legend for="ageId">Client Age</legend>        
+                    <select name="ageId" id="ageId" form="riskform" required>
+                        <option value="NaN" selected disabled><i>Select Age Range</i></option>
+                        <option value = "0" >Less than 30</option>
+                        <option value = "10">30-44</option>
+                        <option value = "20">45-60</option>
+                        <option value = "30">else</option>
+                    </select>
+                </fieldset>
+            </div>
+
+        {{!-- BMI --}}
+            <div class="section"><h2>BODY MASS INDEX</h2></div>
+            <div class="bmi">
+                <fieldset>
+                    <legend>Client Height</legend>
+                    <input name="heightFt" id="feetId" maxlength="2" size="6" placeholder="feet" form="riskform" required>
+                    <input name="heightIn" id="inchId" maxlength="2" size="4" placeholder="inch" form="riskform" required>
+                </fieldset>
+                <fieldset>
+                    <legend for="weightd">Client Weight</legend>
+                    <input name="weightId" id="weightId" maxlength="3" size="6" placeholder="pounds" form="riskform" required>
+                </fieldset>
+            </div>
+        
+        {{!-- Blood Pressure --}}
+            <div class="section"><h2>BLOOD PRESSURE</h2></div>
+            <div class="bp">
+                <!--Blood Pressure-->
+                <fieldset>
+                    <legend for="sbpId">Client's Systolic Value</legend>
+                    <select name="sbpId" id="sbpId" form="riskform" required>
+                        <option value="NaN" selected disabled><i>Select Systolic</i></option>
+                        <option value = "1">Less than 120</option>
+                        <option value = "2">120-129</option>
+                        <option value = "3">130-139</option>
+                        <option value = "4">140-179</option>
+                        <option value = "5">180 or higher</option>
+                    </select>
+                </fieldset>
+            
+                <fieldset>
+                    <legend for="dbpId">Client's Diastolic Value</legend>
+                    <select name="dbpId" id="dbpId" form="riskform" required>
+                        <option value="NaN" selected disabled><i>Select Diastolic</i></option>                        
+                        <option value="1">Less than 80</option>
+                        <option value="2">80-89</option>
+                        <option value="3">90-119</option>
+                        <option value="4">120 or higher</option>
+                    </select>
+                </fieldset>
+            </div>
+
+        {{!-- Family History  --}}
+            <div class="section"><h2>FAMILY HISTORY</h2></div>
+            <div class="fam">
+
+                <fieldset>
+                    <legend for="diabetesId">Diabetes</legend>
+                    <select name="diabetesId" id="diabetesId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+                </fieldset>                
+
+                <fieldset>
+                    <legend for="cancerId">Cancer</legend>
+                    <select name="cancerId" id="cancerId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend for="alzheimersId">Alzheimer’s</legend>
+                    <select name="alzheimersId" id="alzheimersId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+                </fieldset>
+            </div>
+        <br>
+        <div class="footer">
+           <p> <button type="submit">Process Risk Category</button></p>
+            <br>
+        </div>
+    </div>
+    
+    </div>
+</body>

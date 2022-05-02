@@ -1,0 +1,53 @@
+
+.container {
+    grid-template-areas: 
+    'banner banner banner banner banner',
+    'nav board board board chat',
+    'nav score score score chat',
+    'nav rules rules rules chat',
+    'footer footer footer footer footer';
+    display: grid;
+    background-color: aquamarine;
+    padding: 2%;
+    margin: auto;
+    width: auto;
+}
+
+.banner {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-variant: small-caps;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    border: solid 1px black;
+}
+
+.chat {
+    border: outset 4px black;
+    background-color: blueviolet;
+}
+
+.score {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    background-color: black;
+}
+
+.rules {
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: red;
+}
+
+.nav {
+    display: grid;
+    background-color: greenyellow;
+}
+
+.footer {
+    display: inline;
+    background-color: brown;
+}

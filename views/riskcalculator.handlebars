@@ -1,0 +1,110 @@
+<head>
+    <meta charset="UTF-8">
+    <title>HIRC</title>
+    <script>
+        function validate() {
+            let input = document.forms["riskform"]["ageId"].value;
+            if (isNaN(input)) {
+                document.getElementById('ageId').style.border = "1px solid red"
+                alert("Please select a vaild age range");
+                return false;
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="HRC.css">
+</head>
+<body>
+   
+        <div class="header">
+            <p>**************************************************</p>
+            <h2>HEALTH RISK CALCULATOR</h2>
+            <p>**************************************************</p>
+            <p>
+                This program helps you classify health insurance<br>
+                based on their risk level. That is determined<br>
+                by their health. Their health is judged in terms<br>
+                of their body-mass index, blood pressure, age,<br>
+                and family history of disease.
+            </p>
+    </div>
+    <br>
+    <div class="column">      
+         <form action="/calculations" method="POST" id="riskform" onsubmit="return validate()">
+              
+             <h3>Body Mass Index</h3>
+               
+                <div class="item">
+                    <!--AGE-->
+                    <label for="ageId">Client's Age:</label>        
+                    <select title="Select" name="ageId" id="ageId" form="riskform" required>
+                        <option value="NaN" selected disabled><i>Select Age Range</i></option>
+                        <option value = "0" >Less than 30</option>
+                        <option value = "10">30-44</option>
+                        <option value = "20">45-60</option>
+                        <option value = "30">else</option>
+                    </select>
+
+                    <!--BMI-->
+                    <label for="heightId">Client's Height:</label>
+                    <div>
+                        <input name="heightFt" type="number" id="feetId" min="1" max="10" value="5" size="1" form="riskform" required><span> Feet </span> 
+                        <input name="heightIn" type="number" id="inchId" min="0" max="11" value="0" size="2" form="riskform" required><span> Inches </span> 
+                    </div>
+                    
+                    <label for="weightd">Client's Weight:</label>
+                    <div>
+                        <input name="weightId" type="number" min="75" max="500" id="weightId" form="riskform" required><span> Pounds (lbs.) </span> 
+                    </div>
+                </div>
+
+            <h3>Blood Pressure</h3>
+
+                <div class="item">
+                    <!--Blood Pressure-->
+                    <label for="sbpId">Client's Systolic Value:</label>
+                    <select name="sbpId" id="sbpId" form="riskform" required>
+                        <option value = "1">Less than 120</option>
+                        <option value = "2">120-129</option>
+                        <option value = "3">130-139</option>
+                        <option value = "4">140-179</option>
+                        <option value = "5">180 or higher</option>
+                    </select>
+                
+                    <label for="dbpId">Client's Diastolic Value:</label>
+                    <select name="dbpId" id="dbpId" form="riskform" required>
+                        <option value="1">Less than 80</option>
+                        <option value="2">80-89</option>
+                        <option value="3">90-119</option>
+                        <option value="4">120 or higher</option>
+                    </select>
+                </div>
+
+            <h3>Family History</h3>
+
+                <div class="item">
+                    <!--Family History-->
+                    <label for="diabetesId">Diabetes:</label>
+                    <select name="diabetesId" id="diabetesId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+
+                    <label for="cancerId">Cancer:</label>
+                    <select name="cancerId" id="cancerId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+                    
+                    <label for="alzheimersId">Alzheimer’s:</label>
+                    <select name="alzheimersId" id="alzheimersId" form="riskform">
+                        <option value="0">no</option>
+                        <option value="10">yes</option>
+                    </select>
+                </div>
+                <br>
+                    <button type="submit">Process Risk Category</button>
+                    <br>
+                </form>
+        </div>
+   </div>
+</body>

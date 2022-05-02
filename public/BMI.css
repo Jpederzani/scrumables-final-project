@@ -1,0 +1,162 @@
+/* 
+    Author:     Jonathan Pederzani
+    For:        Body Mass Index Calculator - Health Insurance Risk Calculator
+*/
+
+
+ /* Universal Template Settings */
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Custom CSS classes */
+
+.grid-container {
+    display: grid;
+    width: 75%;
+    margin: auto;
+    grid-template-areas: 
+        'header header header header header'
+        'menu menu menu menu menu'
+        'inst inst inst inst inst'
+        'section section section section section'
+        'bmi bmi bmi bmi bmi'
+        'section section section section section'
+        'bp bp bp bp bp'
+        'section section section section section'
+        'fam fam fam fam fam'
+        'footer footer footer footer footer'
+        ;
+}
+
+.title {
+    /* Scrumables Template Values */
+    grid-area: header;
+    width: auto;
+    margin: auto;
+    
+    /* Element Specific Values */
+    text-align: center;
+    display: grid;
+
+}
+
+.section {
+    /* Scrumables Template Values */
+    grid-area: section;
+    display: block;
+    width: fit-content;
+    margin: auto;
+
+    /* Element Specific Values */
+    text-align: center;    
+}
+
+.inst {
+    /* Scrumables Template Values */
+    grid-area: inst;
+    display: block;
+
+    /* Element Specific Values */
+    text-align: justify;
+    width: 75%;
+    margin: auto;
+}
+
+.age {
+    /* Scrumables Template Values */
+    grid-area: age;
+    display: grid;
+    max-width: 325px;
+    margin: auto;
+
+    /* Element Specific Values */
+    text-align: center;
+
+}
+
+.bmi {
+    /* Scrumables Template Values */
+    grid-area: bmi;
+    display: grid;
+    max-width: 325px;
+    margin: auto;
+
+    /* Element Specific Values */
+    text-align: center;
+}
+
+.bp {
+    /* Scrumables Template Values */
+    grid-area: bp;
+    display: grid;
+    position: relative;
+    max-width: 325px;
+    margin: auto;
+    /* Element Specific Values */
+    text-align: center;
+}
+
+.fam {
+    /* Scrumables Template Values */
+    grid-area: fam;
+    display: grid;
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+
+    /* Element Specific Values */
+    grid-template-columns: 33% 33% 33%;
+}
+
+.footer {
+    /* Scrumables Template Values */
+    grid-area: footer;
+    display: grid;
+    position: relative;
+    width: fit-content;
+    margin: auto;
+
+    /* Element Specific Values */
+}
+
+.nav {
+    /* Scrumables Template Values */
+    grid-area: menu;
+    width: 100%;
+    margin: auto;
+
+    /* Element Specific Values */
+    display: inline;
+    text-align: center;
+    padding: 15px;
+
+}
+
+.link {
+    width: auto;
+    margin: auto;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 25px;
+    padding: 1%;
+}
+
+.link:hover {
+    background-color: red;
+    transition-duration: 1s;
+}
+
+/* Key Frame Animations */
+
+
+
+/* Default Element CSS */
+
+legend {
+    font-size: small;
+    font-variant: small-caps;
+}
+

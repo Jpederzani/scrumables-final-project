@@ -1,0 +1,54 @@
+<script src="/socket.io/socket.io.js"></script>
+<link rel="stylesheet" src="/public/testsocket.css">
+<div class="container">
+    <h1 class="banner">Hot Rocks</h1>
+    <div class="nav">
+        <p>Link 1</p>
+        <p>Link 2</p>
+        <p>Link 3</p>
+        <p>etc...</p>
+    </div>
+
+    <div class="board">
+        <p>die 1</p>
+        <p>die 2</p>
+        <p>die 3</p>
+        <p>die 4</p>
+        <p>die 5</p>
+        <p>die 6</p>
+    </div>
+
+    <div class="chat">
+        <h2></h2>
+        <input type="text" class="message">
+        <button onclick="sendMessage()">Send Message</button>
+    
+    </div>
+
+    <div class="rules">
+        <div>Rule #1</div>
+        <div>Rule #2</div>
+        <div>Rule #3</div>
+    </div>
+
+    <div class="footer">
+        <p>This is the footer section</p>
+    </div>
+</div>
+
+<script>
+    const socket = io('localhost:1037');
+
+    socket.on('connection');  // event we are creating and sending over the server
+
+    socket.on('message', (data) => {
+        document.querySelector('h2').innerHTML = data;
+    })
+
+    const sendMessage = () => {  //function we are calling when we click on the button above
+        const messageInput = document.querySelector('.message');
+        const message = messageInput.value;
+        socket.emit('message', message) //emitting an event to the websocket
+    }
+
+</script>

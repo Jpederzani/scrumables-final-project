@@ -175,10 +175,11 @@ var getSelected = function() {
     const roll = document.getElementsByClassName("select");
     var selection = [];
     var tScore;
+    var sideCount;
     
     for(var i = 0, j = 0; i < roll.length; i++){
         if(roll[i].checked == true && roll[i].disabled == false){
-            selection[j] = roll[i].value;
+            selection[i] = roll[i].value;
             document.getElementsByClassName("select")[i].disabled = true;
             j++;
         } 
@@ -189,10 +190,27 @@ var getSelected = function() {
             //continue
         }
     }
+    alert("Selection: " + selection);
+    sideCount = tabulateScore(selection);
 
-    tScore = tabulateScore(selection);
+    for(var i = 0; i < sideCount.length; i++){
+        if(i == 0 || i == 4){
+            //do nothing
+        } else {
+            console.log("Check Number: " + (i+1));
+            switch(i){
+                
+            }
+        }
+    }
+
+    tScore = calculateScore(sideCount);
     setScore(tScore);
     toggleRoll();
+}
+
+function findDie(die){
+    return 
 }
 
 function tabulateScore(die) {
@@ -226,9 +244,7 @@ function tabulateScore(die) {
         }
     })
 
-    tScore = calculateScore(side);
-    return tScore;  
-    
+    return side; 
 }
 
 function calculateScore(amt){

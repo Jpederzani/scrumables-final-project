@@ -8,31 +8,31 @@
 // var $ = jQuery = require('jquery')(window);
 
 // required variables for client
-const exphbs            = require('express-handlebars')
-const express			= require('express');
-const session			= require('express-session');
-const mongoose			= require('mongoose');
-const passport			= require('passport');
-const localStrategy		= require('passport-local').Strategy;
-const bcrypt			= require('bcryptjs');
-const app = express();
-var path = require('path');
-const siteRoutes = require('./routes/authorized-routes');
+const exphbs        = require('express-handlebars');
+const express		= require('express');
+const session		= require('express-session');
+const mongoose		= require('mongoose');
+const passport		= require('passport');
+const localStrategy	= require('passport-local').Strategy;
+const bcrypt		= require('bcryptjs');
+const app 			= express();
+var path 			= require('path');
+const siteRoutes 	= require('./routes/authorized-routes');
 const regSiteRoutes = require('./routes/regular-routes');
-const bodyparser        = require('body-parser');
-const handlers =     require('./lib/handlers')
-const calculations =    require('./lib/calculations')
-const User = require(__dirname+'/models/user');
-var fs = require('fs');
-const req = require('express/lib/request');
-
+const bodyparser    = require('body-parser');
+const handlers 		= require('./lib/handlers');
+const calculations 	= require('./lib/calculations');
+const User 			= require(__dirname+'/models/user');
+var fs 				= require('fs');
+const req 			= require('express/lib/request');
+const database 		= "mongodb+srv://omar:ExYGd9mqyB96n7cH@cluster0.nyasx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 if(process.env.NODE_ENV !== 'production'){
 	require('dotenv').config()
-}
+};
 
 //connecting to the database
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(database, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });

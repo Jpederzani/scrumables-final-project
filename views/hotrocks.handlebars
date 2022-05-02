@@ -18,6 +18,14 @@
     </script>
   	<link rel="stylesheet" href="/hr_resources/hotrocks.css">
 </header>
+    <div class="user">
+        <p  style="text-align:left">New user:</p>
+        <!--<button type="button" style="float:right" onclick="openPopup()"> <a href="/hotrocks/register" class="registerbut" > Register </a></button><br>-->
+        <button type="button" style="float:right" onclick="openPopupR()" > Register </a></button><br>
+        <p class="newuser" style="text-align:left">Returning user:</p>
+        <button type="button" style="float:right" onclick="openPopupLI()">Log-in</button><br><br><br>
+        <button type="button" style="float:center" onclick="openPopupLO()">Log out</button>
+    </div>
 
     <h1 class="title">HoT rOcKs!</h1>
         <div class="container">       
@@ -128,4 +136,15 @@
         uncheckAll();
         setScore();        
     })
+
+    function openPopupR(){
+		window.open('/hotrocks/register', 'Register', 'width=500, height=500');
+	}
+    function openPopupLI(){
+		window.open('/hotrocks/login', 'Register', 'width=500, height=500');
+	}
+    function openPopupLO(){
+		window.open('/hotrocks/logout', 'Register', 'width=500, height=500');
+	}
+
 </script>

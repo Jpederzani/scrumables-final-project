@@ -37,9 +37,6 @@ mongoose.connect(process.env.DATABASE_URL, {
 	useUnifiedTopology: true
 });
 
-// parse urls for data
-app.use(express.urlencoded({extended:false}))
-app.use(express.json());
 
 // configure Handlebars view engine
 app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
@@ -94,9 +91,7 @@ passport.use(new localStrategy(function (username, password, done) {
 	});
 }));
 
-app.use('/hotrocks', siteRoutes);
 
-app.use('/hotrocks', regSiteRoutes);
 
 app.get('/', handlers.home)
 
@@ -107,6 +102,10 @@ app.get('/proposal', handlers.proposal)
 app.get('/riskcalculator', handlers.riskcalculator)
 
 app.get('/bmi_calculator', handlers.bmi_calculator)
+
+app.use('/hotrocks', siteRoutes);
+
+app.use('/hotrocks', regSiteRoutes);
 
 // POST method routes; custom applications
 app.post('/calculations', calculations.calculateRisk)

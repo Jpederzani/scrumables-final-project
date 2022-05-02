@@ -1,0 +1,92 @@
+<!--
+    Author:     Jonathan Pederzani
+    Class:      CPSC-44000
+    Project:    Create a game that uses a six sided die and that offers some instructions, etc...
+
+    Code for potpourri was provided by Eric Pogue's GitHub
+    
+    **WIP**
+-->
+
+<header>	
+<title>HotRocks</title>
+	<script src="hotrocks.js"></script>
+	<link rel="stylesheet" href="/hr_resources/hotrocks.css">
+</header>
+<body>
+    <h1 class="title">HoT rOcKs!<br>
+
+    <div class="user">
+        <p  style="text-align:left">New user:</p>
+       <!--<button type="button" style="float:right" onclick="openPopup()"> <a href="/hotrocks/register" class="registerbut" > Register </a></button><br>-->
+        <button type="button" style="float:right" onclick="openPopupR()" > Register </a></button><br>
+        <p class="newuser" style="text-align:left">Returning user:</p>
+        <button type="button" style="float:right" onclick="openPopupLI()">Log-in</button><br><br><br>
+        <button type="button" style="float:center" onclick="openPopupLO()">Log out</button>
+    </div>
+    <!--move this to bottom eventually-->
+    <script>
+        function openPopupR(){
+		window.open('/hotrocks/register', 'Register', 'width=500, height=500');
+	}
+    function openPopupLI(){
+		window.open('/hotrocks/login', 'Register', 'width=500, height=500');
+	}
+    function openPopupLO(){
+		window.open('/hotrocks/logout', 'Register', 'width=500, height=500');
+	}
+
+    </script>
+
+    
+    <br>
+    <button type="button" onclick="rollDice()">Roll Dice</button></h1>
+        <div class="container">       
+            <table class="board" >
+                <tr>
+                    <td>Die 1:  <image id="die1" class="die" src="" alt=""></td>
+                    <td>Die 2:  <image id="die2" class="die" scr="" alt=""></td>
+                    <td>Die 3:  <image id="die3" class="die" scr="" alt=""></td>
+                    <td>Die 4:  <image id="die4" class="die" src="" alt=""></td>
+                    <td>Die 5:  <image id="die5" class="die" src="" alt=""></td>
+                    <td>Die 6:  <image id="die6" class="die" src="" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        <div id="game_msg" onload="checkRound()"></div>
+        <div class="container">
+            <table class="scoreboard">
+                <th>Roll Score</th><th>Total Score:</th><th>Round #</th>
+                <tr>
+                    <td id="r_scr">000</td><td id="t_scr">000</td><td id="rnd">0</td>
+                </tr>
+            </table>
+            <p>
+                <h2>Hot Rocks Instructions:</h2>
+                <ol>
+                    <li>Click the <q>Roll Dice</q> button at the top of the screen;</li>
+                    <li>Each time you roll you <b>need</b> to collect points, which are <q>1s</q>, <q>5s</q>, or any <q>3-of-a-kind</q> group of dice;</li>
+                    <li>Collecting points requires those dice be pulled from play and the remaining can be rolled;</li>
+                    <li>If you are unable to find any points in a roll, you lose all the points you acquired on that roll;</li>
+                    <li>Players must decide when to stop a turn and choose the "Stay" button to add their score to the scoreboard;</li>
+                    <li><q>Locked</q> scores are safe and cannot be lost their score in and to the</li>                    
+                    <li>Players play to a pre-determined number, usually 5000 points;</li>
+                    <li>The first player to reach, exceed, and <q>stay</q> before losing their points, triggers the <b><q>Final Round</q></b>;
+                        <li>Every player gets one last turn to roll;</li>
+                        <li>If any player exceeds the score of the player who triggered the final round, they become the leader</li>
+                        <li>Once all players have attempted their final roll, the player with the highest score wins;</li>
+                        <li><i>The player who triggers the final round has that turn counted as their final roll, so the better set the score very high;</i></li></li>
+                    <li>If any player rolls a <q>1, 2, 3, 4, 5, 6</q> in any single roll (all six dice at once) you have just rolled <b>HOT ROCKS!</b></li>
+                </ol>
+                <h3>Special Rules:</h3>
+                <ul>
+                    <li>On your first turn you must exceed 600 points before stopping your turn and posting your score;</li>
+                    <li>Rolling <b>HOT ROCKS!</b> is worth 2500 points and a new roll.  Don't get greedy though and lose it;</li>
+                    <li>Points are assigned based off face value:
+                        <i><li>5 = 50 points</li>
+                        <li>1 = 100 points</li>
+                        <li>3 x 2-6 = n x 100 points  <i>(ex: rolling three <q>2s</q> is 200 pts)</i></li>
+                        <li>3 x 1 = 1000 points</li></i></li>
+                </ul>
+            </p>
+        </div>

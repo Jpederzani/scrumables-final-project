@@ -1,11 +1,11 @@
 //Jquery setup variables/requires
-var jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
+// var jsdom = require("jsdom");
+// const { JSDOM } = jsdom;
+// const { window } = new JSDOM();
+// const { document } = (new JSDOM('')).window;
+// global.document = document;
 
-var $ = jQuery = require('jquery')(window);
+// var $ = jQuery = require('jquery')(window);
 
 // required variables for client
 const exphbs            = require('express-handlebars')

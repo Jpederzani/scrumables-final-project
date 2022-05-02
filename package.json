@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/Jpederzani/scrumables-final-project/issues"
   },
-  "homepage": "https://github.com/Jpederzani/scrumables-final-project#readme"
+  "homepage": "https://github.com/Jpederzani/scrumables-final-project#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": []
 }

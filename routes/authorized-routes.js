@@ -3,8 +3,10 @@ const exphbs            = require('express-handlebars')
 const passport = require('passport');
 //const app = express();
 const router = require('express').Router();
+const session		= require('express-session');
 const User = require('../models/user');
 const bcrypt			= require('bcryptjs');
+const req = require('express/lib/request');
 const localStrategy		= require('passport-local').Strategy;
 //const calculations =    require('../lib/gamesPlayedInc');
 
@@ -31,8 +33,6 @@ function isLoggedOut(req, res, next) {
 	if (!req.isAuthenticated()) return next();
 	res.redirect('/');
 }
-
-
 router.get('/about', isLoggedIn, (req, res) => {
 	res.send('about');
 });

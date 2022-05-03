@@ -8,7 +8,8 @@
 var totScore = 000;
 var roundScore = 000;
 var activate = true;
-//var passGo = false;
+var passGo = false;
+var round = 0;
 
 function rollDice() {
 
@@ -40,8 +41,7 @@ function rollDice() {
 	//roll.forEach(tabulateScore);
 	//side.forEach(calculateScore);
 
-	//document.getElementById("rnd").innerHTML = round;
-	//document.getElementById("r_scr").innerHTML = score;
+
 	//document.getElementById("game_msg").innerHTML = side+"And side number: "+i;
 
 }
@@ -80,6 +80,8 @@ function getValue(die) {
     }
 }   
 
+
+
 function select(obj) {
     var elem = document.getElementById(obj);
     var val = document.getElementById("s" + obj[1]);
@@ -104,6 +106,7 @@ function toggleRoll(){
         activate = false;
         document.getElementById("roll").disabled = true;
         document.getElementById("sub").disabled = false;
+        document.getElementById("post").disabled = true;
     }
     else {
         activate = true;
@@ -162,13 +165,32 @@ var setScore = function(tempScore) {
     else if(tempScore === 0){
         roundScore = 0;
         alert("Loser!  No points generated on this roll, round score set to zero.");
-        passGo = true;
+        round++;
         releaseDice();
        
+    }
+    else if(passGo == true){
+        alert("You have posted [" + roundScore +"] points to the scorebaord.");
+        totScore += roundScore;
+        roundScore = 0;
+        round++;
+        passGo = false;
+        releaseDice();
     }
 
     document.getElementById("r_scr").innerHTML = roundScore;
     document.getElementById("t_scr").innerHTML = totScore;
+    document.getElementById("rnd").innerHTML = round;
+}
+
+function postScore() {
+    if(roundScore == 0){
+        alert("You cannot post zero points!");
+    }
+    else {
+        passGo = true;
+        setScore();
+    }    
 }
 
 var getSelected = function() {
@@ -179,7 +201,7 @@ var getSelected = function() {
     
     for(var i = 0, j = 0; i < roll.length; i++){
         if(roll[i].checked == true && roll[i].disabled == false){
-            selection[i] = roll[i].value;
+            selection[j] = roll[i].value;
             document.getElementsByClassName("select")[i].disabled = true;
             j++;
         } 
@@ -193,25 +215,25 @@ var getSelected = function() {
     alert("Selection: " + selection);
     sideCount = tabulateScore(selection);
 
-    for(var i = 0; i < sideCount.length; i++){
-        if(i == 0 || i == 4){
-            //do nothing
-        } else {
-            console.log("Check Number: " + (i+1));
-            switch(i){
+    // for(var i = 0; i < sideCount.length; i++){
+    //     if(i == 0 || i == 4){
+    //         //do nothing
+    //     } else {
+    //         console.log("Check Number: " + (i+1));
+    //         switch(i){
                 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 
     tScore = calculateScore(sideCount);
+    if(tScore > 0){
+        document.getElementById("post").disabled = false;
+    }
     setScore(tScore);
     toggleRoll();
 }
 
-function findDie(die){
-    return 
-}
 
 function tabulateScore(die) {
     var tScore;
@@ -320,5 +342,6 @@ function calculateScore(amt){
                 break;
         }	
     }
+
     return score;
 }

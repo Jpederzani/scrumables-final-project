@@ -63,8 +63,9 @@
                 </tr>
 
                 <tr>
-                    <td><input type="button" id="roll" value="Roll Dice"></td>
-                    <td><input type="submit" id="sub" ></td>
+                    <td class="cast"><input type="button" id="roll" value="Roll Dice"></td>
+                    <td><input type="submit" id="sub" value="Score Dice"></td>
+                    <td class="post"><input type="button" id="post" onclick="postScore(this)" value="Post Score" disabled="true"></td>
                 </tr>
 
                 <tr>
@@ -123,7 +124,7 @@
         //Event Listeners
 
    
-        $("td input:button").on("click", function() {
+        $(".cast input:button").on("click", function() {
             //Function Calls
             rollDice();
             uncheckAll();
@@ -141,6 +142,7 @@
         uncheckAll();
         setScore();        
     })
+
 
     function openPopupR(){
 		window.open('/hotrocks/register', 'Register', 'width=500, height=500');

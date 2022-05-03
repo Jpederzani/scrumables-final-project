@@ -15,6 +15,14 @@ const UserSchema = new mongoose.Schema({
 		type:	Number,
 		default: 0
 	},
+	totalscore:{
+		type:  Number,
+		default: 0
+	},
+	totalrolls:{
+		type: Number,
+		default: 0
+	}
 });
 
 // Exporting module to allow it to be imported in other files 

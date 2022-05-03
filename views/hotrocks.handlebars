@@ -18,16 +18,19 @@
     </script>
   	<link rel="stylesheet" href="/hr_resources/hotrocks.css">
 </header>
-    <div class="user">
-        <p  style="text-align:left">New user:</p>
-        <!--<button type="button" style="float:right" onclick="openPopup()"> <a href="/hotrocks/register" class="registerbut" > Register </a></button><br>-->
-        <button type="button" style="float:right" onclick="openPopupR()" > Register </a></button><br>
-        <p class="newuser" style="text-align:left">Returning user:</p>
-        <button type="button" style="float:right" onclick="openPopupLI()">Log-in</button><br><br><br>
-        <button type="button" style="float:center" onclick="openPopupLO()">Log out</button>
+    <div class="banner">
+        <h1 class="title">HoT rOcKs!</h1>
     </div>
-
-    <h1 class="title">HoT rOcKs!</h1>
+    
+    <div class="interface">
+        <div class="user-panel">
+            New user:
+            <button type="button" onclick="openPopupR()" > Register </a></button><br>
+            <p class="newuser">Returning user:</p>
+            <button type="button" onclick="openPopupLI()">Log-in</button><br><br><br>
+            <button type="button" onclick="openPopupLO()">Log out</button>
+        </div>
+    
         <div class="container">       
             <table class="board" >
                 <tr>
@@ -111,7 +114,7 @@
                 </ul>
             </p>
         </div>
-
+    </div>
 <script>
     $(document).ready(function() {             
       "use strict";
@@ -148,3 +151,4 @@
 	}
 
 </script>
+  

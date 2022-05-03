@@ -28,7 +28,7 @@ const req 			= require('express/lib/request');
 const database 		= "mongodb+srv://omar:ExYGd9mqyB96n7cH@cluster0.nyasx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 if(process.env.NODE_ENV !== 'production'){
-	require('dotenv').config()
+	require('dotenv').config();
 };
 
 //connecting to the database

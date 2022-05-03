@@ -10,10 +10,10 @@
     "hbs": "^4.2.0",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
-    "socket.io": "^4.5.0",
     "mongoose": "^6.3.1",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.5.0"
   },
   "name": "hotrocks",
   "description": "The Scrumables final project repository for CPSC44000 Software Engineering",

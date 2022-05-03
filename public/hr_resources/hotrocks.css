@@ -10,8 +10,6 @@
     height: 50%;
     width: 50%;
    
-   
-
 }
 
 .container {
@@ -19,6 +17,25 @@
     padding: 25px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.interface {
+    display: grid;
+    grid-template-areas: 
+    'banner banner banner banner user-panel',
+    'nav scoreboard scoreboard scoreboard chat',
+    'nav ui ui ui chat',
+    'nav ui ui ui chat',
+    'footer footer footer footer footer';
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.user-panel {
+    float: right;
+    border: solid 1px black;
+    
 }
 
 .board {

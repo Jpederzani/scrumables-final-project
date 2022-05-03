@@ -133,6 +133,13 @@ function checkStatus() {
     if(limit == 6){
         releaseDice();
     }
+    else if(totScore >= 1500){
+        alert("Congratulations!  You have just completed a round of Hot Rocks!  Starting a new game...");
+        round = 0;
+        roundScore = 0;
+        totScore = 0;
+        releaseDice();
+    }
 }
 
 function releaseDice() {
@@ -194,6 +201,12 @@ function postScore() {
     else {
         passGo = true;
         setScore();
+    }
+    if(totScore >= 1500){
+        checkStatus();
+        document.getElementById("r_scr").innerHTML = roundScore;
+        document.getElementById("t_scr").innerHTML = totScore;
+        document.getElementById("rnd").innerHTML = round;
     }    
 }
 
@@ -203,6 +216,11 @@ var getSelected = function() {
     var tScore;
     var sideCount;
     
+    if(roll.length == 0){
+        alert("Empty Hand Submitted: Please select dice to send for scoring.");
+        return;
+    }
+
     for(var i = 0, j = 0; i < roll.length; i++){
         if(roll[i].checked == true && roll[i].disabled == false){
             selection[j] = roll[i].value;

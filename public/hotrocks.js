@@ -4,7 +4,10 @@
 	Purpose: 	To provide functionality to HoTrOcKs!
 */
 
+
+
 //Global Variables
+const User 			= ('../models/user');
 var totScore = 000;
 var roundScore = 000;
 var activate = true;
@@ -43,8 +46,8 @@ function rollDice() {
 	//document.getElementById("rnd").innerHTML = round;
 	//document.getElementById("r_scr").innerHTML = score;
 	//document.getElementById("game_msg").innerHTML = side+"And side number: "+i;
-
 }
+
 //Required Functions
 
 function getValue(die) {
@@ -110,6 +113,7 @@ function toggleRoll(){
         document.getElementById("roll").disabled = false;
         document.getElementById("sub").disabled = true;
     }
+
 }
 
 function checkStatus() {
